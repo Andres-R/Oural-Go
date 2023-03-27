@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oural_go/utils/constants.dart';
 
 void showCustomErrorDialog(BuildContext context, String message) {
   showDialog(
@@ -23,9 +24,11 @@ class CustomErrorDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(25)),
+        borderRadius: BorderRadius.all(
+          Radius.circular(kBorderRadius),
+        ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: kMainBGcolor,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.topCenter,
@@ -33,15 +36,15 @@ class CustomErrorDialog extends StatelessWidget {
           SizedBox(
             height: 250,
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(kPadding),
               child: Column(
                 children: [
-                  const SizedBox(height: 64),
+                  SizedBox(height: kPadding * 4),
                   Text(
                     "Error",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: kTextColor,
                       fontSize: 32,
                     ),
                     textAlign: TextAlign.center,
@@ -51,11 +54,11 @@ class CustomErrorDialog extends StatelessWidget {
                     title,
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.grey,
+                      color: kAccentColor,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: kPadding),
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pop();
@@ -64,16 +67,16 @@ class CustomErrorDialog extends StatelessWidget {
                       height: 45,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: kTextColor,
                         borderRadius: BorderRadius.all(
-                          Radius.circular(30),
+                          Radius.circular(kBorderRadius + 5),
                         ),
                       ),
                       child: Center(
                         child: Text(
                           "Okay",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kMainBGcolor,
                           ),
                         ),
                       ),
@@ -86,13 +89,13 @@ class CustomErrorDialog extends StatelessWidget {
           Positioned(
             top: -40,
             child: CircleAvatar(
-              backgroundColor: Colors.black,
+              backgroundColor: kThemeColor,
               radius: 50,
               child: Center(
                 child: Icon(
                   Icons.error,
                   size: 95,
-                  color: Colors.white,
+                  color: kMainBGcolor,
                 ),
               ),
             ),

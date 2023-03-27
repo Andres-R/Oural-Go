@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oural_go/cubit/favorite_items_cubit.dart';
 import 'package:oural_go/cubit/ticker_info_cubit.dart';
@@ -62,23 +60,23 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
           elevation: 0,
           centerTitle: true,
           automaticallyImplyLeading: true,
-          iconTheme: const IconThemeData(
-            color: Colors.grey,
+          iconTheme: IconThemeData(
+            color: kAccentColor,
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: kMainBGcolor,
           title: Column(
             children: [
-              const Text(
+              Text(
                 'Displaying information for',
                 style: TextStyle(
-                  color: Colors.grey,
+                  color: kAccentColor,
                   fontSize: 14,
                 ),
               ),
               Text(
                 widget.ticker,
-                style: const TextStyle(
-                  color: Colors.black,
+                style: TextStyle(
+                  color: kTextColor,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -87,7 +85,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
           ),
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 16.0),
+              padding: EdgeInsets.only(right: kPadding),
               child: GestureDetector(
                 onTap: () {
                   if (isFavorited) {
@@ -108,15 +106,15 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
-                      const Icon(
+                      Icon(
                         Icons.star,
                         size: 30,
-                        color: Colors.black,
+                        color: kThemeColor,
                       ),
                       Icon(
                         Icons.star,
                         size: 26,
-                        color: isFavorited ? Colors.yellow : Colors.white,
+                        color: isFavorited ? Colors.yellow : kMainBGcolor,
                       ),
                     ],
                   ),
@@ -131,7 +129,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
               viewPricesTable = !viewPricesTable;
             });
           },
-          backgroundColor: Colors.black,
+          backgroundColor: kThemeColor,
           child: Icon(
             viewPricesTable
                 ? Icons.switch_right_rounded
@@ -141,7 +139,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: Colors.white,
+          color: kMainBGcolor,
           child: BlocBuilder<TickerInfoCubit, TickerInfoState>(
             builder: (_, tickerState) {
               List<List<double>> prices =
@@ -171,25 +169,22 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                   children: [
                     Container(
                       height: 50,
-                      color: Colors.white,
+                      color: kMainBGcolor,
                     ),
-                    Container(
-                      //color: Colors.white,
-                      child: Image.network(
-                        'https://companiesmarketcap.com/img/company-logos/128/${widget.ticker}.webp',
-                        // width: 200,
-                        // height: 200,
-                        // color: Colors.red,
-                      ),
+                    Image.network(
+                      'https://companiesmarketcap.com/img/company-logos/128/${widget.ticker}.webp',
+                      // width: 200,
+                      // height: 200,
+                      // color: Colors.red,
                     ),
-                    const SizedBox(
-                      height: 16,
+                    SizedBox(
+                      height: kPadding,
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: EdgeInsets.all(kPadding),
                       child: Container(
                         //height: 200,
-                        color: Colors.white,
+                        color: kMainBGcolor,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -204,7 +199,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
+                                    padding: EdgeInsets.all(kPadding / 4),
                                     child: Text(
                                       '${pastWeekPerformance.toStringAsFixed(2)}%',
                                       style: TextStyle(
@@ -216,14 +211,14 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 4),
+                                SizedBox(height: kPadding / 4),
                                 SizedBox(
                                   width:
                                       MediaQuery.of(context).size.width * 0.25,
-                                  child: const Text(
+                                  child: Text(
                                     'In the past week',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: kTextColor,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -241,7 +236,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
+                                    padding: EdgeInsets.all(kPadding / 4),
                                     child: Text(
                                       '${pastMonthPerformance.toStringAsFixed(2)}%',
                                       style: TextStyle(
@@ -253,14 +248,14 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 4),
+                                SizedBox(height: kPadding / 4),
                                 SizedBox(
                                   width:
                                       MediaQuery.of(context).size.width * 0.25,
-                                  child: const Text(
+                                  child: Text(
                                     'In the past month',
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: kTextColor,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -278,7 +273,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
+                                    padding: EdgeInsets.all(kPadding / 4),
                                     child: Text(
                                       '${pastTradingDaysPerformance.toStringAsFixed(2)}%',
                                       style: TextStyle(
@@ -290,14 +285,14 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(height: 4),
+                                SizedBox(height: kPadding / 4),
                                 SizedBox(
                                   width:
                                       MediaQuery.of(context).size.width * 0.25,
                                   child: Text(
                                     'In the past ${dates.length} trading days',
-                                    style: const TextStyle(
-                                      color: Colors.black,
+                                    style: TextStyle(
+                                      color: kTextColor,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -309,24 +304,24 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(kPadding / 2),
                       child: Container(
                         height: 20,
-                        color: Colors.white,
-                        child: const Align(
+                        color: kMainBGcolor,
+                        child: Align(
                           alignment: Alignment.center,
                           child: Text(
                             'Note: all times are in EST',
                             style: TextStyle(
-                              color: Colors.grey,
+                              color: kAccentColor,
                             ),
                           ),
                         ),
                       ),
                     ),
                     Container(
-                      height: 4,
-                      color: Colors.grey.withOpacity(0.4),
+                      height: kPadding / 4,
+                      color: kAccentColor.withOpacity(0.4),
                     ),
                     viewPricesTable
                         ? Stack(
@@ -361,8 +356,8 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                             ],
                           ),
                     Container(
-                      height: 4,
-                      color: Colors.grey.withOpacity(0.4),
+                      height: kPadding / 4,
+                      color: kAccentColor.withOpacity(0.4),
                     ),
                     viewPricesTable
                         ? BottomInfoBar(
@@ -385,17 +380,17 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
 
   Color determineBGColor(double value) {
     if (value > 0) {
-      return Colors.green.withOpacity(0.2);
+      return kBullish.withOpacity(0.2);
     } else {
-      return Colors.red.withOpacity(0.2);
+      return kBearish.withOpacity(0.2);
     }
   }
 
   Color determineTextColor(double value) {
     if (value > 0) {
-      return Colors.green;
+      return kBullish;
     } else {
-      return Colors.red;
+      return kBearish;
     }
   }
 }
@@ -414,186 +409,186 @@ class BottomInfoBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //height: 200,
-      color: Colors.white,
+      color: kMainBGcolor,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(kPadding),
         child: Column(
           children: [
             Row(
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 16,
-                  width: 16,
+                  height: kPadding,
+                  width: kPadding,
                   decoration: BoxDecoration(
-                    color: Colors.green.withOpacity(0.2),
+                    color: kBullish.withOpacity(0.2),
                     borderRadius: const BorderRadius.all(
                       Radius.circular(5),
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Icon(
                       Icons.call_made_rounded,
-                      color: Colors.green,
+                      color: kBullish,
                       size: 16,
                     ),
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: kPadding),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Denotes increase of asset price between a 30',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: kTextColor,
                       ),
                     ),
                     Text(
                       'min interval',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: kTextColor,
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: kPadding),
             Row(
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 16,
-                  width: 16,
+                  height: kPadding,
+                  width: kPadding,
                   decoration: BoxDecoration(
-                    color: Colors.red.withOpacity(0.2),
+                    color: kBearish.withOpacity(0.2),
                     borderRadius: const BorderRadius.all(
                       Radius.circular(5),
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: RotationTransition(
-                      turns: AlwaysStoppedAnimation(270 / 360),
+                      turns: const AlwaysStoppedAnimation(270 / 360),
                       child: Icon(
                         Icons.call_received_rounded,
-                        color: Colors.red,
+                        color: kBearish,
                         size: 16,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: kPadding),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Denotes decrease of asset price between a 30',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: kTextColor,
                       ),
                     ),
                     Text(
                       'min interval',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: kTextColor,
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: kPadding),
             Row(
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 16,
-                  width: 16,
+                  height: kPadding,
+                  width: kPadding,
                   decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.6),
+                    color: kAccentColor.withOpacity(0.6),
                     borderRadius: const BorderRadius.all(
                       Radius.circular(5),
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Icon(
                       //Icons.arrow_right_alt,
                       Icons.arrow_forward,
-                      color: Colors.black,
+                      color: kTextColor,
                       size: 16,
                     ),
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: kPadding),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
+                  children: [
                     Text(
                       'Denotes no change of asset price between a 30',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: kTextColor,
                       ),
                     ),
                     Text(
                       'min interval',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: kTextColor,
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: kPadding),
             Row(
               //crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 16,
-                  width: 16,
+                SizedBox(
+                  height: kPadding,
+                  width: kPadding,
                   child: Center(
                     child: Text(
                       '%',
                       style: TextStyle(
-                        color: Colors.green,
+                        color: kBullish,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: kPadding),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        const Text(
+                        Text(
                           'Denotes probability of  ',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: kTextColor,
                           ),
                         ),
                         Container(
-                          height: 16,
-                          width: 16,
+                          height: kPadding,
+                          width: kPadding,
                           decoration: BoxDecoration(
-                            color: Colors.green.withOpacity(0.2),
+                            color: kBullish.withOpacity(0.2),
                             borderRadius: const BorderRadius.all(
                               Radius.circular(5),
                             ),
                           ),
-                          child: const Center(
+                          child: Center(
                             child: Icon(
                               Icons.call_made_rounded,
-                              color: Colors.green,
+                              color: kBullish,
                               size: 16,
                             ),
                           ),
                         ),
-                        const Text(
+                        Text(
                           '  occuring over',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: kTextColor,
                           ),
                         ),
                       ],
@@ -601,14 +596,14 @@ class BottomInfoBar extends StatelessWidget {
                     Text(
                       'the past ${dates.length} trading days for $ticker',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: kTextColor,
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: kPadding),
           ],
         ),
       ),
@@ -634,13 +629,7 @@ class IntradayInfoTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: kCardBGcolor,
-        // boxShadow: const [
-        //   BoxShadow(
-        //     color: Colors.grey,
-        //     blurRadius: 5,
-        //   )
-        // ],
+        color: kMainBGcolor,
       ),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -689,14 +678,14 @@ class IntradayHighInfoBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: kCardBGcolor,
+      color: kMainBGcolor,
       //width: 80,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(kPadding / 2),
         child: Column(
           children: [
             const Text(''),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
             ...List.generate(
               containers.length,
               (index) {
@@ -707,42 +696,47 @@ class IntradayHighInfoBar extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.green.withOpacity(0.2),
+                            color: kBullish.withOpacity(0.2),
                             borderRadius: const BorderRadius.all(
                               Radius.circular(5),
                             ),
                           ),
                           child: Text(
                             '+${containers[index].intradayHigh.toStringAsFixed(2)}',
-                            style: const TextStyle(
-                              color: Colors.green,
+                            style: TextStyle(
+                              color: kBullish,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: kPadding / 2),
                   ],
                 );
               },
             ),
-            const Text('Avg.'),
-            const SizedBox(height: 8),
+            Text(
+              'Avg.',
+              style: TextStyle(
+                color: kTextColor,
+              ),
+            ),
+            SizedBox(height: kPadding / 2),
             Container(
               decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.2),
+                color: kBullish.withOpacity(0.2),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(5),
                 ),
               ),
               child: Text(
                 '+${averageHigh.toStringAsFixed(2)}',
-                style: const TextStyle(
-                  color: Colors.green,
+                style: TextStyle(
+                  color: kBullish,
                 ),
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
           ],
         ),
       ),
@@ -763,14 +757,14 @@ class IntradayLowInfoBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: kCardBGcolor,
+      color: kMainBGcolor,
       //width: 80,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(kPadding / 2),
         child: Column(
           children: [
             const Text(''),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
             ...List.generate(
               containers.length,
               (index) {
@@ -781,42 +775,47 @@ class IntradayLowInfoBar extends StatelessWidget {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            color: Colors.red.withOpacity(0.2),
+                            color: kBearish.withOpacity(0.2),
                             borderRadius: const BorderRadius.all(
                               Radius.circular(5),
                             ),
                           ),
                           child: Text(
                             '-${containers[index].intradayLow.toStringAsFixed(2)}',
-                            style: const TextStyle(
-                              color: Colors.red,
+                            style: TextStyle(
+                              color: kBearish,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: kPadding / 2),
                   ],
                 );
               },
             ),
-            const Text('Avg.'),
-            const SizedBox(height: 8),
+            Text(
+              'Avg.',
+              style: TextStyle(
+                color: kTextColor,
+              ),
+            ),
+            SizedBox(height: kPadding / 2),
             Container(
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.2),
+                color: kBearish.withOpacity(0.2),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(5),
                 ),
               ),
               child: Text(
                 '-${averageLow.toStringAsFixed(2)}',
-                style: const TextStyle(
-                  color: Colors.red,
+                style: TextStyle(
+                  color: kBearish,
                 ),
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
           ],
         ),
       ),
@@ -837,14 +836,17 @@ class IntradayLowPriceBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: kCardBGcolor,
+      color: kMainBGcolor,
       width: 80,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(kPadding / 2),
         child: Column(
           children: [
-            const Text('Low'),
-            const SizedBox(height: 8),
+            Text(
+              'Low',
+              style: TextStyle(color: kTextColor),
+            ),
+            SizedBox(height: kPadding / 2),
             ...List.generate(
               containers.length,
               (index) {
@@ -855,18 +857,21 @@ class IntradayLowPriceBar extends StatelessWidget {
                       children: [
                         Text(
                           '\$${numberFormat.format(containers[index].open - containers[index].intradayLow)}',
+                          style: TextStyle(
+                            color: kTextColor,
+                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: kPadding / 2),
                   ],
                 );
               },
             ),
             const Text(''),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
             const Text(''),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
           ],
         ),
       ),
@@ -887,14 +892,19 @@ class IntradayHighBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: kCardBGcolor,
+      color: kMainBGcolor,
       width: 80,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(kPadding / 2),
         child: Column(
           children: [
-            const Text('High'),
-            const SizedBox(height: 8),
+            Text(
+              'High',
+              style: TextStyle(
+                color: kTextColor,
+              ),
+            ),
+            SizedBox(height: kPadding / 2),
             ...List.generate(
               containers.length,
               (index) {
@@ -905,18 +915,21 @@ class IntradayHighBar extends StatelessWidget {
                       children: [
                         Text(
                           '\$${numberFormat.format(containers[index].open + containers[index].intradayHigh)}',
+                          style: TextStyle(
+                            color: kTextColor,
+                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: kPadding / 2),
                   ],
                 );
               },
             ),
             const Text(''),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
             const Text(''),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
           ],
         ),
       ),
@@ -937,14 +950,19 @@ class IntradayOpenPriceBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: kCardBGcolor,
+      color: kMainBGcolor,
       width: 80,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(kPadding / 2),
         child: Column(
           children: [
-            const Text('Open'),
-            const SizedBox(height: 8),
+            Text(
+              'Open',
+              style: TextStyle(
+                color: kTextColor,
+              ),
+            ),
+            SizedBox(height: kPadding / 2),
             ...List.generate(
               containers.length,
               (index) {
@@ -955,18 +973,21 @@ class IntradayOpenPriceBar extends StatelessWidget {
                       children: [
                         Text(
                           '\$${numberFormat.format(containers[index].open)}',
+                          style: TextStyle(
+                            color: kTextColor,
+                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: kPadding / 2),
                   ],
                 );
               },
             ),
             const Text(''),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
             const Text(''),
-            const SizedBox(height: 8),
+            SizedBox(height: kPadding / 2),
           ],
         ),
       ),
@@ -985,78 +1006,79 @@ class IntradayDatesSideBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //color: Colors.green,
       clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-          // color: kCardBGcolor,
-          // boxShadow: const [
-          //   BoxShadow(
-          //     color: Colors.grey,
-          //     blurRadius: 5,
-          //     //offset: Offset(0, 6),
-          //   ),
-          // ],
-          ),
-
-      //height: 200,
+      decoration: const BoxDecoration(),
       width: 135,
       child: Container(
-        margin: EdgeInsets.only(right: 5),
+        margin: const EdgeInsets.only(right: 5),
         decoration: BoxDecoration(
-          color: kCardBGcolor,
+          color: kMainBGcolor,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey,
+              color: kAccentColor,
               blurRadius: 5,
               //spreadRadius: 8,
             )
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(kPadding / 2),
           child: Column(
             children: [
-              const Text('Dates'),
-              const SizedBox(height: 8),
+              Text(
+                'Dates',
+                style: TextStyle(
+                  color: kTextColor,
+                ),
+              ),
+              SizedBox(height: kPadding / 2),
               ...List.generate(
                 dates.length,
                 (index) {
                   return Column(
                     children: [
                       Container(
-                        //width: 100,
-                        //height: 20,
-                        //color: Colors.orange,
+                        color: kMainBGcolor,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 20,
                               //color: Colors.purple,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Text((index + 1).toString()),
+                                  Text(
+                                    (index + 1).toString(),
+                                    style: TextStyle(
+                                      color: kTextColor,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               //width: 40,
                               //color: Colors.red,
-                              child: Text(dates[index]),
+                              child: Text(
+                                dates[index],
+                                style: TextStyle(
+                                  color: kTextColor,
+                                ),
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: kPadding / 2),
                     ],
                   );
                 },
               ),
               const Text(''),
-              const SizedBox(height: 8),
+              SizedBox(height: kPadding / 2),
               const Text(''),
-              const SizedBox(height: 8),
+              SizedBox(height: kPadding / 2),
               //const SizedBox(height: 8),
             ],
           ),
@@ -1079,37 +1101,32 @@ class DisplayDatesSideBar extends StatelessWidget {
     return Container(
       //color: Colors.green,
       clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-          // color: kCardBGcolor,
-          // boxShadow: const [
-          //   BoxShadow(
-          //     color: Colors.grey,
-          //     blurRadius: 5,
-          //     //offset: Offset(0.5, 0),
-          //   ),
-          // ],
-          ),
-
+      decoration: const BoxDecoration(),
       //height: 200,
       width: 135,
       child: Container(
-        margin: EdgeInsets.only(right: 5),
+        margin: const EdgeInsets.only(right: 5),
         decoration: BoxDecoration(
-          color: kCardBGcolor,
+          color: kMainBGcolor,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey,
+              color: kAccentColor,
               blurRadius: 5,
               //spreadRadius: 8,
             )
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(kPadding / 2),
           child: Column(
             children: [
-              const Text('Dates'),
-              const SizedBox(height: 8),
+              Text(
+                'Dates',
+                style: TextStyle(
+                  color: kTextColor,
+                ),
+              ),
+              SizedBox(height: kPadding / 2),
               ...List.generate(
                 dates.length,
                 (index) {
@@ -1118,37 +1135,44 @@ class DisplayDatesSideBar extends StatelessWidget {
                       Container(
                         //width: 100,
                         //height: 20,
-                        //color: Colors.orange,
+                        color: kMainBGcolor,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
+                            SizedBox(
                               width: 20,
-                              //color: Colors.purple,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Text((index + 1).toString()),
+                                  Text(
+                                    (index + 1).toString(),
+                                    style: TextStyle(
+                                      color: kTextColor,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                            Container(
-                              //width: 40,
-                              //color: Colors.red,
-                              child: Text(dates[index]),
+                            SizedBox(
+                              child: Text(
+                                dates[index],
+                                style: TextStyle(
+                                  color: kTextColor,
+                                ),
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: kPadding / 2),
                     ],
                   );
                 },
               ),
-              const Text(
+              Text(
                 '%',
                 style: TextStyle(
-                  color: Colors.green,
+                  color: kBullish,
                 ),
               ),
               //const SizedBox(height: 8),
@@ -1183,17 +1207,8 @@ class DisplayTablePrices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //height: 200,
-      //color: Colors.blue,
-
       decoration: BoxDecoration(
-        color: kCardBGcolor,
-        // boxShadow: const [
-        //   BoxShadow(
-        //     color: Colors.grey,
-        //     blurRadius: 5,
-        //   )
-        // ],
+        color: kMainBGcolor,
       ),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -1206,7 +1221,7 @@ class DisplayTablePrices extends StatelessWidget {
               // color: Colors.red,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(kPadding / 2),
               child: Column(
                 children: [
                   Row(
@@ -1223,13 +1238,13 @@ class DisplayTablePrices extends StatelessWidget {
                       Container(
                         width: 110,
                         //height: 10,
-                        color: kCardBGcolor,
-                        child: const Align(
+                        color: kMainBGcolor,
+                        child: Align(
                           alignment: Alignment.center,
                           child: Text(
                             'Performance',
                             style: TextStyle(
-                              color: Colors.black,
+                              color: kTextColor,
                             ),
                           ),
                         ),
@@ -1237,7 +1252,7 @@ class DisplayTablePrices extends StatelessWidget {
                     ],
                   ),
                   // hours ^ ^
-                  const SizedBox(height: 8),
+                  SizedBox(height: kPadding / 2),
                   // prices v v
                   ...List.generate(
                     dates.length,
@@ -1259,9 +1274,9 @@ class DisplayTablePrices extends StatelessWidget {
                                   Widget icon = Icon(
                                     Icons.add,
                                     size: 12,
-                                    color: kCardBGcolor,
+                                    color: kMainBGcolor,
                                   );
-                                  Color iconBG = kCardBGcolor;
+                                  Color iconBG = kMainBGcolor;
 
                                   String letter = '';
                                   if (j != hours.length - 1) {
@@ -1284,14 +1299,14 @@ class DisplayTablePrices extends StatelessWidget {
                             ],
                           ),
                           i != dates.length - 1
-                              ? const SizedBox(height: 8)
+                              ? SizedBox(height: kPadding / 2)
                               : const SizedBox()
                         ],
                       );
                     },
                   ),
                   // prices ^ ^
-                  const SizedBox(height: 8),
+                  SizedBox(height: kPadding / 2),
                   // probabilities v v
                   Row(
                     children: [
@@ -1309,7 +1324,7 @@ class DisplayTablePrices extends StatelessWidget {
                       Container(
                         width: 110,
                         height: 10,
-                        color: Colors.white,
+                        color: kMainBGcolor,
                       ),
                     ],
                   ),
@@ -1324,35 +1339,35 @@ class DisplayTablePrices extends StatelessWidget {
 
   Color determineColor(String letter) {
     if (letter == 'U') {
-      return Colors.green.withOpacity(0.2);
+      return kBullish.withOpacity(0.2);
     } else if (letter == 'D') {
-      return Colors.red.withOpacity(0.2);
+      return kBearish.withOpacity(0.2);
     } else {
-      return Colors.grey.withOpacity(0.6);
+      return kAccentColor.withOpacity(0.6);
     }
   }
 
   Widget determineIcon(String letter) {
     if (letter == 'U') {
-      return const Icon(
+      return Icon(
         Icons.call_made_rounded,
-        color: Colors.green,
+        color: kBullish,
         size: 16,
       );
     } else if (letter == 'D') {
-      return const RotationTransition(
-        turns: AlwaysStoppedAnimation(270 / 360),
+      return RotationTransition(
+        turns: const AlwaysStoppedAnimation(270 / 360),
         child: Icon(
           Icons.call_received_rounded,
-          color: Colors.red,
+          color: kBearish,
           size: 16,
         ),
       );
     } else {
-      return const Icon(
+      return Icon(
         //Icons.arrow_right_alt,
         Icons.arrow_forward,
-        color: Colors.black,
+        color: kTextColor,
         size: 16,
       );
     }

@@ -18,29 +18,29 @@ class HourCard extends StatelessWidget {
 
     return Container(
       width: outerCardWidth,
-      color: kCardBGcolor,
+      color: kMainBGcolor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            color: kCardBGcolor,
+            color: kMainBGcolor,
             width: innerCardWidth,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                   hour,
-                  style: const TextStyle(
-                    color: Colors.black,
+                  style: TextStyle(
+                    color: kTextColor,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            height: 16,
-            width: 16,
-            color: kCardBGcolor,
+            height: kPadding,
+            width: kPadding,
+            color: kMainBGcolor,
           )
         ],
       ),

@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oural_go/cubit/ticker_company_name_cubit.dart';
+import 'package:oural_go/utils/constants.dart';
 
 class FavoriteItemCard extends StatefulWidget {
   const FavoriteItemCard({
@@ -36,18 +37,18 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
       ],
       child: Container(
         height: 50,
-        decoration: const BoxDecoration(
-          color: Colors.white,
+        decoration: BoxDecoration(
+          color: kMainBGcolor,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey,
+              color: kAccentColor,
               blurRadius: 5,
             ),
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
+          padding: EdgeInsets.symmetric(
+            horizontal: kPadding,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,8 +58,8 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
                   Container(
                     height: 26,
                     width: 26,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
+                    decoration: BoxDecoration(
+                      color: kMainBGcolor,
                     ),
                     child: Center(
                       child: Image.network(
@@ -66,15 +67,15 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  SizedBox(width: kPadding / 2),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         widget.ticker,
-                        style: const TextStyle(
-                          color: Colors.black,
+                        style: TextStyle(
+                          color: kTextColor,
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
@@ -83,7 +84,7 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
                           TickerCompanyNameState>(
                         builder: (_, state) {
                           return Container(
-                            color: Colors.white,
+                            color: kMainBGcolor,
                             width: MediaQuery.of(context).size.width * 0.7,
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
@@ -91,8 +92,8 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
                                 children: [
                                   Text(
                                     state.companyName,
-                                    style: const TextStyle(
-                                      color: Colors.grey,
+                                    style: TextStyle(
+                                      color: kAccentColor,
                                     ),
                                   ),
                                 ],
@@ -108,11 +109,11 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
               Container(
                 height: 26,
                 width: 26,
-                color: Colors.white,
-                child: const Center(
+                color: kMainBGcolor,
+                child: Center(
                   child: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.grey,
+                    color: kAccentColor,
                     size: 22,
                   ),
                 ),

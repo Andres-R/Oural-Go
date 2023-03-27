@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+import 'package:oural_go/utils/constants.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -37,29 +38,29 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       keyboardType: inputType,
       focusNode: focusNode,
-      style: TextStyle(color: Colors.black),
+      style: TextStyle(color: kTextColor),
       cursorColor: Colors.black,
       textInputAction: next ? TextInputAction.next : TextInputAction.done,
       onSaved: (value) {
         controller.text = value!;
       },
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16),
-        enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30.0)),
-          borderSide: BorderSide(color: Colors.black),
+        contentPadding: EdgeInsets.symmetric(horizontal: kPadding),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(kBorderRadius + 5)),
+          borderSide: BorderSide(color: kThemeColor),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(30.0)),
-          borderSide: BorderSide(color: Colors.black),
+          borderRadius: BorderRadius.all(Radius.circular(kBorderRadius + 5)),
+          borderSide: BorderSide(color: kThemeColor),
         ),
         prefixText: enableCurrencyMode ? _currency : '',
-        prefixIcon: Icon(icon, color: Colors.black),
+        prefixIcon: Icon(icon, color: kThemeColor),
         hintText: hint,
-        hintStyle: TextStyle(color: Colors.grey),
+        hintStyle: TextStyle(color: kAccentColor),
         //labelText: hint,
         //labelStyle: TextStyle(color: Colors.grey.shade700),
-        fillColor: Colors.white,
+        fillColor: kAccentColor,
         filled: true,
         //floatingLabelBehavior: FloatingLabelBehavior.never,
       ),
@@ -82,7 +83,7 @@ class InputDoneView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: Colors.white,
+      color: kMainBGcolor,
       child: Align(
         alignment: Alignment.centerRight,
         child: MaterialButton(
@@ -92,7 +93,7 @@ class InputDoneView extends StatelessWidget {
           child: Text(
             "Done",
             style: TextStyle(
-              color: Colors.black,
+              color: kTextColor,
               fontSize: 16,
             ),
           ),

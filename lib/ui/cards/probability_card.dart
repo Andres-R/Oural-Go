@@ -13,29 +13,29 @@ class ProbabilityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: outerCardWidth,
-      color: kCardBGcolor,
+      color: kMainBGcolor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            color: kCardBGcolor,
+            color: kMainBGcolor,
             width: innerCardWidth,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                   probability,
-                  style: const TextStyle(
-                    color: Colors.green,
+                  style: TextStyle(
+                    color: kBullish,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            height: 16,
-            width: 16,
-            color: kCardBGcolor,
+            height: kPadding,
+            width: kPadding,
+            color: kMainBGcolor,
           )
         ],
       ),

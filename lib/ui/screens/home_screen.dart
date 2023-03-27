@@ -7,6 +7,7 @@ import 'package:oural_go/data/service/data_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oural_go/ui/cards/favorite_item_card.dart';
 import 'package:oural_go/ui/screens/ticker_info_screen.dart';
+import 'package:oural_go/utils/constants.dart';
 import 'package:oural_go/utils/custom_error_dialog.dart';
 import 'package:oural_go/utils/input_popup.dart';
 import 'package:http/http.dart' as http;
@@ -41,12 +42,12 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: kMainBGcolor,
           centerTitle: true,
-          title: const Text(
+          title: Text(
             'Tickers',
             style: TextStyle(
-              color: Colors.black,
+              color: kTextColor,
               fontSize: 22,
             ),
           ),
@@ -54,24 +55,24 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: Colors.white,
+          color: kMainBGcolor,
           child: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 Container(
                   height: 50,
-                  color: Colors.white,
+                  color: kMainBGcolor,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(kPadding),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         'Favorites',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: kTextColor,
                           fontSize: 26,
                         ),
                       ),
@@ -88,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             String ticker =
                                 state.favoriteItems[index]['ticker'];
                             return Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(kPadding / 2),
                               child: GestureDetector(
                                 onTap: () {
                                   Navigator.of(context).pushNamed(
@@ -116,16 +117,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton.extended(
-          label: const Text(
+          label: Text(
             'Add ticker',
             style: TextStyle(
-              color: Colors.white,
+              color: kMainBGcolor,
               fontSize: 18,
             ),
           ),
-          icon: const Icon(
+          icon: Icon(
             Icons.add,
-            color: Colors.white,
+            color: kMainBGcolor,
           ),
           onPressed: () {
             showInputDialog(
@@ -134,10 +135,10 @@ class _HomeScreenState extends State<HomeScreen> {
               _favoriteItemsCubit,
             );
           },
-          backgroundColor: Colors.black,
-          shape: const RoundedRectangleBorder(
+          backgroundColor: kThemeColor,
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(25.0),
+              Radius.circular(kBorderRadius),
             ),
           ),
         ),

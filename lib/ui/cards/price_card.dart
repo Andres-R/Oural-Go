@@ -17,12 +17,12 @@ class PriceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: outerCardWidth,
-      color: kCardBGcolor,
+      color: kMainBGcolor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            color: kCardBGcolor,
+            color: kMainBGcolor,
             width: innerCardWidth,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -33,13 +33,18 @@ class PriceCard extends StatelessWidget {
                 //   color: Colors
                 //       .orange,
                 // ),
-                Text(price),
+                Text(
+                  price,
+                  style: TextStyle(
+                    color: kTextColor,
+                  ),
+                ),
               ],
             ),
           ),
           Container(
-            height: 16,
-            width: 16,
+            height: kPadding,
+            width: kPadding,
             decoration: BoxDecoration(
               color: iconBG,
               borderRadius: const BorderRadius.all(

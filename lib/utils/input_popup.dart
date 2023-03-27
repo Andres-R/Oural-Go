@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:oural_go/cubit/favorite_items_cubit.dart';
 import 'package:oural_go/data/repository/data_repository.dart';
 import 'package:oural_go/data/service/data_service.dart';
+import 'package:oural_go/utils/constants.dart';
 import 'package:oural_go/utils/custom_error_dialog.dart';
 import 'package:oural_go/utils/custom_text_form_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,9 +45,9 @@ class _CustomInputDialogState extends State<CustomInputDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(25)),
+        borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: kMainBGcolor,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.topCenter,
@@ -54,29 +55,29 @@ class _CustomInputDialogState extends State<CustomInputDialog> {
           SizedBox(
             height: 250,
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(kPadding),
               child: Column(
                 children: [
                   //const Spacer(),
                   Text(
                     "Enter ticker",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: kTextColor,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: kPadding),
                   Text(
                     "Ticker will be visible in favorites list after adding symbol",
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: kAccentColor,
                       fontSize: 16,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: kPadding),
                   CustomTextFormField(
                     controller: widget.textEditingController,
                     hint: 'Symbol',
@@ -87,7 +88,7 @@ class _CustomInputDialogState extends State<CustomInputDialog> {
                     next: false,
                     focusNode: null,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: kPadding),
                   GestureDetector(
                     onTap: () async {
                       DataService ds = DataService();
@@ -117,16 +118,16 @@ class _CustomInputDialogState extends State<CustomInputDialog> {
                       height: 45,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: kThemeColor,
                         borderRadius: BorderRadius.all(
-                          Radius.circular(30),
+                          Radius.circular(kBorderRadius + 5),
                         ),
                       ),
                       child: Center(
                         child: Text(
                           "Add",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kMainBGcolor,
                             fontSize: 16,
                           ),
                         ),
