@@ -31,17 +31,17 @@ class CustomErrorDialog extends StatelessWidget {
         alignment: Alignment.topCenter,
         children: [
           SizedBox(
-            height: 215,
+            height: 250,
             child: Padding(
               padding: EdgeInsets.all(16),
               child: Column(
                 children: [
-                  const Spacer(),
+                  const SizedBox(height: 64),
                   Text(
                     "Error",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.purple,
+                      color: Colors.black,
                       fontSize: 32,
                     ),
                     textAlign: TextAlign.center,
@@ -51,22 +51,22 @@ class CustomErrorDialog extends StatelessWidget {
                     title,
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.black,
+                      color: Colors.grey,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 16),
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pop();
                     },
                     child: Container(
-                      height: 40,
+                      height: 45,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.orange,
+                        color: Colors.black,
                         borderRadius: BorderRadius.all(
-                          Radius.circular(25),
+                          Radius.circular(30),
                         ),
                       ),
                       child: Center(
@@ -86,13 +86,13 @@ class CustomErrorDialog extends StatelessWidget {
           Positioned(
             top: -40,
             child: CircleAvatar(
-              backgroundColor: Colors.orange,
-              radius: 40,
+              backgroundColor: Colors.black,
+              radius: 50,
               child: Center(
                 child: Icon(
                   Icons.error,
-                  size: 80,
-                  color: Colors.black,
+                  size: 95,
+                  color: Colors.white,
                 ),
               ),
             ),
