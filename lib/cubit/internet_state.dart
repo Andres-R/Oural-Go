@@ -1,5 +1,6 @@
 part of 'internet_cubit.dart';
 
+// NOT USED
 class InternetState extends Equatable {
   @override
   List<Object> get props => [];

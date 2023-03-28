@@ -7,6 +7,8 @@ import 'dart:async';
 
 part 'internet_state.dart';
 
+// NOT USED
+
 class InternetCubit extends Cubit<InternetState> {
   final Connectivity connectivity;
   late StreamSubscription connectivityStreamSubscription;

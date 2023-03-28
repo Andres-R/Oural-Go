@@ -6,7 +6,7 @@ import 'package:oural_go/data/repository/data_repository.dart';
 import 'package:oural_go/data/service/data_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oural_go/ui/cards/favorite_item_card.dart';
-import 'package:oural_go/ui/screens/ticker_info_screen.dart';
+import 'package:oural_go/ui/screens/general/ticker_info_screen.dart';
 import 'package:oural_go/utils/constants.dart';
 import 'package:oural_go/utils/custom_error_dialog.dart';
 import 'package:oural_go/utils/input_popup.dart';

@@ -60,7 +60,7 @@ class CustomTextFormField extends StatelessWidget {
         hintStyle: TextStyle(color: kAccentColor),
         //labelText: hint,
         //labelStyle: TextStyle(color: Colors.grey.shade700),
-        fillColor: kAccentColor,
+        fillColor: kMainBGcolor,
         filled: true,
         //floatingLabelBehavior: FloatingLabelBehavior.never,
       ),
