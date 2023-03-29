@@ -142,6 +142,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
               backgroundColor: kThemeColor,
               child: Icon(
                 lockDatesBar ? Icons.lock_outline : Icons.sync_alt,
+                color: kIconColor,
               ),
             ),
             SizedBox(height: kPadding),
@@ -154,11 +155,15 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
               },
               backgroundColor: kThemeColor,
               child: viewPricesTable
-                  ? const Icon(Icons.sync)
-                  : const RotationTransition(
-                      turns: AlwaysStoppedAnimation(90 / 360),
+                  ? Icon(
+                      Icons.sync,
+                      color: kIconColor,
+                    )
+                  : RotationTransition(
+                      turns: const AlwaysStoppedAnimation(90 / 360),
                       child: Icon(
                         Icons.sync,
+                        color: kIconColor,
                       ),
                     ),
             ),

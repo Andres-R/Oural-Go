@@ -9,6 +9,7 @@ Color kTextColor = Colors.black;
 Color kThemeColor = Colors.black;
 Color kBullish = Colors.green;
 Color kBearish = Colors.red;
+Color kIconColor = Colors.white;
 
 double kPadding = 16.0;
 double kBorderRadius = 25;
