@@ -74,6 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           color: kTextColor,
                           fontSize: 26,
+                          fontFamily: 'Georgia',
                         ),
                       ),
                     ],
@@ -122,6 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(
               color: kMainBGcolor,
               fontSize: 18,
+              fontFamily: 'Georgia',
             ),
           ),
           icon: Icon(

@@ -99,7 +99,8 @@ class _CustomInputDialogState extends State<CustomInputDialog> {
 
                       if (ticker.isEmpty) {
                         //Navigator.of(context).pop();
-                        showCustomErrorDialog(widget.dialogContext, 'OPPS');
+                        showCustomErrorDialog(
+                            widget.dialogContext, 'Please enter a symbol.');
                       } else if (await dr.isTickerInFavorites(ticker)) {
                         showCustomErrorDialog(widget.dialogContext,
                             'Ticker $ticker is already in favorites list!');

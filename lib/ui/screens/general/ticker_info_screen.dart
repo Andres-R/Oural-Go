@@ -11,6 +11,8 @@ import 'package:oural_go/ui/widgets/other/bottom_info_bar.dart';
 import 'package:oural_go/ui/widgets/other/display_dates_sidebar.dart';
 import 'package:oural_go/ui/widgets/other/display_table_prices.dart';
 import 'package:oural_go/ui/widgets/intraday/core/intraday_info_table.dart';
+import 'package:oural_go/ui/widgets/unlocked/display_unlocked_table_prices.dart';
+import 'package:oural_go/ui/widgets/unlocked/intraday_unlocked_info_table.dart';
 import 'package:oural_go/utils/constants.dart';
 
 class TickerInfoScreenArguments {
@@ -131,6 +133,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             FloatingActionButton(
+              heroTag: 'fab1',
               onPressed: () {
                 setState(() {
                   lockDatesBar = !lockDatesBar;
@@ -143,6 +146,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
             ),
             SizedBox(height: kPadding),
             FloatingActionButton(
+              heroTag: 'fab2',
               onPressed: () {
                 setState(() {
                   viewPricesTable = !viewPricesTable;
@@ -237,37 +241,103 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                       height: kPadding / 4,
                       color: kAccentColor.withOpacity(0.4),
                     ),
+
+                    // IntradayUnlockedInfoTable(
+                    //   containers: containers,
+                    //   numberFormat: numberFormat,
+                    //   averageIntradayLow: averageIntradayLow,
+                    //   averageIntradayHigh: averageIntradayHigh,
+                    //   dates: dates,
+                    // ),
+
+                    // DisplayUnlockedTablePrices(
+                    //   hours: hours,
+                    //   dates: dates,
+                    //   performance: performance,
+                    //   numberFormat: numberFormat,
+                    //   prices: prices,
+                    //   probabilities: probabilities,
+                    // ),
+
+                    // Stack(
+                    //   alignment: Alignment.centerLeft,
+                    //   children: [
+                    //     DisplayTablePrices(
+                    //       hours: hours,
+                    //       dates: dates,
+                    //       performance: performance,
+                    //       numberFormat: numberFormat,
+                    //       prices: prices,
+                    //       probabilities: probabilities,
+                    //     ),
+                    //     DisplayDatesSideBar(
+                    //       dates: dates,
+                    //     ),
+                    //   ],
+                    // ),
+
+                    // Stack(
+                    //   alignment: Alignment.centerLeft,
+                    //   children: [
+                    //     IntradayInfoTable(
+                    //       containers: containers,
+                    //       numberFormat: numberFormat,
+                    //       averageIntradayLow: averageIntradayLow,
+                    //       averageIntradayHigh: averageIntradayHigh,
+                    //     ),
+                    //     IntradayDatesSideBar(
+                    //       dates: dates,
+                    //     ),
+                    //   ],
+                    // ),
                     viewPricesTable
-                        ? Stack(
-                            alignment: Alignment.centerLeft,
-                            children: [
-                              DisplayTablePrices(
+                        ? lockDatesBar
+                            ? Stack(
+                                alignment: Alignment.centerLeft,
+                                children: [
+                                  DisplayTablePrices(
+                                    hours: hours,
+                                    dates: dates,
+                                    performance: performance,
+                                    numberFormat: numberFormat,
+                                    prices: prices,
+                                    probabilities: probabilities,
+                                  ),
+                                  DisplayDatesSideBar(
+                                    dates: dates,
+                                  ),
+                                ],
+                              )
+                            : DisplayUnlockedTablePrices(
                                 hours: hours,
                                 dates: dates,
                                 performance: performance,
                                 numberFormat: numberFormat,
                                 prices: prices,
                                 probabilities: probabilities,
-                              ),
-                              DisplayDatesSideBar(
-                                dates: dates,
-                              ),
-                            ],
-                          )
-                        : Stack(
-                            alignment: Alignment.centerLeft,
-                            children: [
-                              IntradayInfoTable(
+                              )
+                        : lockDatesBar
+                            ? Stack(
+                                alignment: Alignment.centerLeft,
+                                children: [
+                                  IntradayInfoTable(
+                                    containers: containers,
+                                    numberFormat: numberFormat,
+                                    averageIntradayLow: averageIntradayLow,
+                                    averageIntradayHigh: averageIntradayHigh,
+                                  ),
+                                  IntradayDatesSideBar(
+                                    dates: dates,
+                                  ),
+                                ],
+                              )
+                            : IntradayUnlockedInfoTable(
                                 containers: containers,
                                 numberFormat: numberFormat,
                                 averageIntradayLow: averageIntradayLow,
                                 averageIntradayHigh: averageIntradayHigh,
-                              ),
-                              IntradayDatesSideBar(
                                 dates: dates,
                               ),
-                            ],
-                          ),
                     Container(
                       height: kPadding / 4,
                       color: kAccentColor.withOpacity(0.4),
