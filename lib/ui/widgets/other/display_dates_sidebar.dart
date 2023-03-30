@@ -45,37 +45,32 @@ class DisplayDatesSideBar extends StatelessWidget {
                 (index) {
                   return Column(
                     children: [
-                      Container(
-                        //width: 100,
-                        //height: 20,
-                        color: kMainBGcolor,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 20,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    (index + 1).toString(),
-                                    style: TextStyle(
-                                      color: kTextColor,
-                                    ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: 20,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  (index + 1).toString(),
+                                  style: TextStyle(
+                                    color: kTextColor,
                                   ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              child: Text(
-                                dates[index],
-                                style: TextStyle(
-                                  color: kTextColor,
                                 ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            child: Text(
+                              dates[index],
+                              style: TextStyle(
+                                color: kTextColor,
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: kPadding / 2),
                     ],

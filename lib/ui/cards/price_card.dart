@@ -15,24 +15,16 @@ class PriceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: outerCardWidth,
-      color: kMainBGcolor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            color: kMainBGcolor,
+          SizedBox(
             width: innerCardWidth,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                // Container(
-                //   width: 2,
-                //   height: 10,
-                //   color: Colors
-                //       .orange,
-                // ),
                 Text(
                   price,
                   style: TextStyle(

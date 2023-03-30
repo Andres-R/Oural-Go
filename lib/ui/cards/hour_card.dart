@@ -16,14 +16,12 @@ class HourCard extends StatelessWidget {
     final parts = hours[index].split(':');
     final hour = '${parts[0]}:${parts[1]}';
 
-    return Container(
+    return SizedBox(
       width: outerCardWidth,
-      color: kMainBGcolor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            color: kMainBGcolor,
+          SizedBox(
             width: innerCardWidth,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -37,10 +35,9 @@ class HourCard extends StatelessWidget {
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: kPadding,
             width: kPadding,
-            color: kMainBGcolor,
           )
         ],
       ),

@@ -13,10 +13,10 @@ class DailyPercentageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 110,
       //height: 10,
-      color: kMainBGcolor,
+      //color: kMainBGcolor,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

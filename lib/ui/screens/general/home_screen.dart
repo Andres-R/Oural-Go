@@ -42,93 +42,85 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
+          //backgroundColor: theme value used,
           backgroundColor: kMainBGcolor,
           centerTitle: true,
           title: Text(
             'Tickers',
             style: TextStyle(
               color: kTextColor,
-              fontSize: 22,
+              fontSize: kTitleText,
             ),
           ),
         ),
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: kMainBGcolor,
-          child: SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
-            child: Column(
-              children: [
-                Container(
-                  height: 50,
-                  color: kMainBGcolor,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(kPadding),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Favorites',
-                        style: TextStyle(
-                          color: kTextColor,
-                          fontSize: 26,
-                          fontFamily: 'Georgia',
-                        ),
+        body: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: EdgeInsets.all(kPadding),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Favorites',
+                      style: TextStyle(
+                        color: kTextColor,
+                        fontSize: 26,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                BlocBuilder<FavoriteItemsCubit, FavoriteItemsState>(
-                  builder: (_, state) {
-                    return Column(
-                      children: [
-                        ...List.generate(
-                          state.favoriteItems.length,
-                          (index) {
-                            String ticker =
-                                state.favoriteItems[index]['ticker'];
-                            return Padding(
-                              padding: EdgeInsets.all(kPadding / 2),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).pushNamed(
-                                    TickerInfoScreen.routeName,
-                                    arguments: TickerInfoScreenArguments(
-                                      _favoriteItemsCubit,
-                                      ticker,
-                                    ),
-                                  );
-                                },
-                                child: FavoriteItemCard(
-                                  ticker: ticker,
-                                ),
+              ),
+              BlocBuilder<FavoriteItemsCubit, FavoriteItemsState>(
+                builder: (_, state) {
+                  return Column(
+                    children: [
+                      ...List.generate(
+                        state.favoriteItems.length,
+                        (index) {
+                          String ticker = state.favoriteItems[index]['ticker'];
+                          return Padding(
+                            padding: EdgeInsets.all(kPadding / 2),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).pushNamed(
+                                  TickerInfoScreen.routeName,
+                                  arguments: TickerInfoScreenArguments(
+                                    _favoriteItemsCubit,
+                                    ticker,
+                                  ),
+                                );
+                              },
+                              child: FavoriteItemCard(
+                                ticker: ticker,
                               ),
-                            );
-                          },
-                        ),
-                        const SizedBox(height: 200),
-                      ],
-                    );
-                  },
-                ),
-              ],
-            ),
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 200),
+                    ],
+                  );
+                },
+              ),
+            ],
           ),
         ),
         floatingActionButton: FloatingActionButton.extended(
           label: Text(
             'Add ticker',
             style: TextStyle(
-              color: kMainBGcolor,
+              color: kIconColor,
               fontSize: 18,
-              fontFamily: 'Georgia',
             ),
           ),
           icon: Icon(
             Icons.add,
-            color: kMainBGcolor,
+            color: kIconColor,
           ),
           onPressed: () {
             showInputDialog(

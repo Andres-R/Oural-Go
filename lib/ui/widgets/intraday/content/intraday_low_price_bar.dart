@@ -24,7 +24,9 @@ class IntradayLowPriceBar extends StatelessWidget {
           children: [
             Text(
               'Low',
-              style: TextStyle(color: kTextColor),
+              style: TextStyle(
+                color: kTextColor,
+              ),
             ),
             SizedBox(height: kPadding / 2),
             ...List.generate(

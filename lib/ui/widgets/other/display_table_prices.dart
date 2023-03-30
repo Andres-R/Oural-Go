@@ -26,133 +26,122 @@ class DisplayTablePrices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: kMainBGcolor,
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            // this side box hides under DisplayDatesSideBar
-            Container(
-              width: 135,
-              // height: 300,
-              // color: Colors.red,
-            ),
-            Padding(
-              padding: EdgeInsets.all(kPadding / 2),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      ...List.generate(
-                        hours.length,
-                        (index) {
-                          return HourCard(
-                            hours: hours,
-                            index: index,
-                          );
-                        },
-                      ),
-                      Container(
-                        width: 110,
-                        //height: 10,
-                        color: kMainBGcolor,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'Performance',
-                            style: TextStyle(
-                              color: kTextColor,
-                            ),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          // this side box hides under DisplayDatesSideBar
+          const SizedBox(
+            width: 135,
+          ),
+          Padding(
+            padding: EdgeInsets.all(kPadding / 2),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    ...List.generate(
+                      hours.length,
+                      (index) {
+                        return HourCard(
+                          hours: hours,
+                          index: index,
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      width: 110,
+                      child: Center(
+                        child: Text(
+                          'Performance',
+                          style: TextStyle(
+                            color: kTextColor,
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  // hours ^ ^
-                  SizedBox(height: kPadding / 2),
-                  // prices v v
-                  ...List.generate(
-                    dates.length,
-                    (i) {
-                      double dailyPerformance = double.parse(
-                          '${(((prices[i][hours.length - 1] - prices[i][0]) / prices[i][0]) * 100)}');
-                      double priceMovement =
-                          prices[i][hours.length - 1] - prices[i][0];
-                      return Column(
-                        children: [
-                          Row(
-                            children: [
-                              ...List.generate(
-                                hours.length,
-                                (j) {
-                                  String price =
-                                      '\$${numberFormat.format(prices[i][j])}';
+                    ),
+                  ],
+                ),
+                // hours ^ ^
+                SizedBox(height: kPadding / 2),
+                // prices v v
+                ...List.generate(
+                  dates.length,
+                  (i) {
+                    double dailyPerformance = double.parse(
+                        '${(((prices[i][hours.length - 1] - prices[i][0]) / prices[i][0]) * 100)}');
+                    double priceMovement =
+                        prices[i][hours.length - 1] - prices[i][0];
+                    return Column(
+                      children: [
+                        Row(
+                          children: [
+                            ...List.generate(
+                              hours.length,
+                              (j) {
+                                String price =
+                                    '\$${numberFormat.format(prices[i][j])}';
 
-                                  Widget icon = Icon(
-                                    Icons.add,
-                                    size: 12,
-                                    color: kMainBGcolor,
-                                  );
-                                  Color iconBG = kMainBGcolor;
+                                Widget icon = Icon(
+                                  Icons.add,
+                                  size: 12,
+                                  color: kMainBGcolor,
+                                );
+                                Color iconBG = kMainBGcolor;
 
-                                  String letter = '';
-                                  if (j != hours.length - 1) {
-                                    letter = performance[i][j];
-                                    icon = determineIcon(letter);
-                                    iconBG = determineColor(letter);
-                                  }
+                                String letter = '';
+                                if (j != hours.length - 1) {
+                                  letter = performance[i][j];
+                                  icon = determineIcon(letter);
+                                  iconBG = determineColor(letter);
+                                }
 
-                                  return PriceCard(
-                                    price: price,
-                                    iconBG: iconBG,
-                                    icon: icon,
-                                  );
-                                },
-                              ),
-                              DailyPercentageCard(
-                                dailyPerformance: dailyPerformance,
-                                priceMovement: priceMovement,
-                              ),
-                            ],
-                          ),
-                          i != dates.length - 1
-                              ? SizedBox(height: kPadding / 2)
-                              : const SizedBox()
-                        ],
-                      );
-                    },
-                  ),
-                  // prices ^ ^
-                  SizedBox(height: kPadding / 2),
-                  // probabilities v v
-                  Row(
-                    children: [
-                      ...List.generate(
-                        probabilities.length,
-                        (index) {
-                          String probability =
-                              '${(probabilities[index] * 100).toStringAsFixed(2)} %';
+                                return PriceCard(
+                                  price: price,
+                                  iconBG: iconBG,
+                                  icon: icon,
+                                );
+                              },
+                            ),
+                            DailyPercentageCard(
+                              dailyPerformance: dailyPerformance,
+                              priceMovement: priceMovement,
+                            ),
+                          ],
+                        ),
+                        i != dates.length - 1
+                            ? SizedBox(height: kPadding / 2)
+                            : const SizedBox()
+                      ],
+                    );
+                  },
+                ),
+                // prices ^ ^
+                SizedBox(height: kPadding / 2),
+                // probabilities v v
+                Row(
+                  children: [
+                    ...List.generate(
+                      probabilities.length,
+                      (index) {
+                        String probability =
+                            '${(probabilities[index] * 100).toStringAsFixed(2)} %';
 
-                          return ProbabilityCard(
-                            probability: probability,
-                          );
-                        },
-                      ),
-                      Container(
-                        width: 110,
-                        height: 10,
-                        color: kMainBGcolor,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                        return ProbabilityCard(
+                          probability: probability,
+                        );
+                      },
+                    ),
+                    const SizedBox(
+                      width: 110,
+                      height: 10,
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

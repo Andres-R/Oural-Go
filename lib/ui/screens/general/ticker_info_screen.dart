@@ -69,26 +69,16 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
           iconTheme: IconThemeData(
             color: kAccentColor,
           ),
+          //backgroundColor: theme value used,
           backgroundColor: kMainBGcolor,
-          title: Column(
-            children: [
-              Text(
-                'Displaying information for',
-                style: TextStyle(
-                  color: kAccentColor,
-                  fontSize: 14,
-                ),
-              ),
-              Text(
-                widget.ticker,
-                style: TextStyle(
-                  color: kTextColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
+          title: Text(
+            widget.ticker,
+            style: TextStyle(
+              color: kTextColor,
+              fontSize: kTitleText,
+            ),
           ),
+
           actions: [
             Padding(
               padding: EdgeInsets.only(right: kPadding),
@@ -105,25 +95,20 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                     isFavorited = !isFavorited;
                   });
                 },
-                child: Container(
-                  // height: 20,
-                  // width: 20,
-                  color: Colors.transparent,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Icon(
-                        Icons.star,
-                        size: 30,
-                        color: kThemeColor,
-                      ),
-                      Icon(
-                        Icons.star,
-                        size: 26,
-                        color: isFavorited ? Colors.yellow : kMainBGcolor,
-                      ),
-                    ],
-                  ),
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Icon(
+                      Icons.star,
+                      size: 30,
+                      color: kAccentColor,
+                    ),
+                    Icon(
+                      Icons.star,
+                      size: 26,
+                      color: isFavorited ? Colors.yellow : kMainBGcolor,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -169,198 +154,188 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
             ),
           ],
         ),
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: kMainBGcolor,
-          child: BlocBuilder<TickerInfoCubit, TickerInfoState>(
-            builder: (_, tickerState) {
-              List<List<double>> prices =
-                  tickerState.tickerInfoContainer.prices;
-              List<String> dates = tickerState.tickerInfoContainer.dates;
-              List<String> hours = tickerState.tickerInfoContainer.hours;
-              List<List<String>> performance =
-                  tickerState.tickerInfoContainer.performance;
-              List<double> probabilities =
-                  tickerState.tickerInfoContainer.probabilities;
-              List<IntradayInfoContainer> containers =
-                  tickerState.tickerInfoContainer.containers;
-              double averageIntradayHigh =
-                  tickerState.tickerInfoContainer.averageIntradayHigh;
-              double averageIntradayLow =
-                  tickerState.tickerInfoContainer.averageIntradayLow;
+        body: BlocBuilder<TickerInfoCubit, TickerInfoState>(
+          builder: (_, tickerState) {
+            List<List<double>> prices = tickerState.tickerInfoContainer.prices;
+            List<String> dates = tickerState.tickerInfoContainer.dates;
+            List<String> hours = tickerState.tickerInfoContainer.hours;
+            List<List<String>> performance =
+                tickerState.tickerInfoContainer.performance;
+            List<double> probabilities =
+                tickerState.tickerInfoContainer.probabilities;
+            List<IntradayInfoContainer> containers =
+                tickerState.tickerInfoContainer.containers;
+            double averageIntradayHigh =
+                tickerState.tickerInfoContainer.averageIntradayHigh;
+            double averageIntradayLow =
+                tickerState.tickerInfoContainer.averageIntradayLow;
 
-              double pastMonthPerformance =
-                  tickerState.tickerInfoContainer.pastMonthPerformance;
-              double pastTradingDaysPerformance =
-                  tickerState.tickerInfoContainer.pastTradingDaysPerformance;
-              double pastWeekPerformance =
-                  tickerState.tickerInfoContainer.pastWeekPerformance;
+            double pastMonthPerformance =
+                tickerState.tickerInfoContainer.pastMonthPerformance;
+            double pastTradingDaysPerformance =
+                tickerState.tickerInfoContainer.pastTradingDaysPerformance;
+            double pastWeekPerformance =
+                tickerState.tickerInfoContainer.pastWeekPerformance;
 
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(height: kPadding * 3),
-                    Image.network(
-                      'https://companiesmarketcap.com/img/company-logos/128/${widget.ticker}.webp',
-                    ),
-                    SizedBox(
-                      height: kPadding,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(kPadding),
-                      child: Container(
-                        //height: 200,
-                        color: kMainBGcolor,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            PastPerformanceCard(
-                              value: pastWeekPerformance,
-                              description: 'In the past week',
-                            ),
-                            PastPerformanceCard(
-                              value: pastMonthPerformance,
-                              description: 'In the past month',
-                            ),
-                            PastPerformanceCard(
-                              value: pastTradingDaysPerformance,
-                              description:
-                                  'In the past ${dates.length} trading days',
-                            ),
-                          ],
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: kPadding * 3),
+                  Image.network(
+                    'https://companiesmarketcap.com/img/company-logos/128/${widget.ticker}.webp',
+                  ),
+                  SizedBox(
+                    height: kPadding,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(kPadding),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        PastPerformanceCard(
+                          value: pastWeekPerformance,
+                          description: 'In the past week',
                         ),
+                        PastPerformanceCard(
+                          value: pastMonthPerformance,
+                          description: 'In the past month',
+                        ),
+                        PastPerformanceCard(
+                          value: pastTradingDaysPerformance,
+                          description:
+                              'In the past ${dates.length} trading days',
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: kPadding / 2),
+                  Center(
+                    child: Text(
+                      'Note: all times are in EST',
+                      style: TextStyle(
+                        color: kAccentColor,
                       ),
                     ),
-                    SizedBox(height: kPadding / 2),
-                    Center(
-                      child: Text(
-                        'Note: all times are in EST',
-                        style: TextStyle(
-                          color: kAccentColor,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: kPadding / 2),
-                    Container(
-                      height: kPadding / 4,
-                      color: kAccentColor.withOpacity(0.4),
-                    ),
+                  ),
+                  SizedBox(height: kPadding / 2),
+                  Container(
+                    height: kPadding / 4,
+                    color: kAccentColor.withOpacity(0.4),
+                  ),
 
-                    // IntradayUnlockedInfoTable(
-                    //   containers: containers,
-                    //   numberFormat: numberFormat,
-                    //   averageIntradayLow: averageIntradayLow,
-                    //   averageIntradayHigh: averageIntradayHigh,
-                    //   dates: dates,
-                    // ),
+                  // IntradayUnlockedInfoTable(
+                  //   containers: containers,
+                  //   numberFormat: numberFormat,
+                  //   averageIntradayLow: averageIntradayLow,
+                  //   averageIntradayHigh: averageIntradayHigh,
+                  //   dates: dates,
+                  // ),
 
-                    // DisplayUnlockedTablePrices(
-                    //   hours: hours,
-                    //   dates: dates,
-                    //   performance: performance,
-                    //   numberFormat: numberFormat,
-                    //   prices: prices,
-                    //   probabilities: probabilities,
-                    // ),
+                  // DisplayUnlockedTablePrices(
+                  //   hours: hours,
+                  //   dates: dates,
+                  //   performance: performance,
+                  //   numberFormat: numberFormat,
+                  //   prices: prices,
+                  //   probabilities: probabilities,
+                  // ),
 
-                    // Stack(
-                    //   alignment: Alignment.centerLeft,
-                    //   children: [
-                    //     DisplayTablePrices(
-                    //       hours: hours,
-                    //       dates: dates,
-                    //       performance: performance,
-                    //       numberFormat: numberFormat,
-                    //       prices: prices,
-                    //       probabilities: probabilities,
-                    //     ),
-                    //     DisplayDatesSideBar(
-                    //       dates: dates,
-                    //     ),
-                    //   ],
-                    // ),
+                  // Stack(
+                  //   alignment: Alignment.centerLeft,
+                  //   children: [
+                  //     DisplayTablePrices(
+                  //       hours: hours,
+                  //       dates: dates,
+                  //       performance: performance,
+                  //       numberFormat: numberFormat,
+                  //       prices: prices,
+                  //       probabilities: probabilities,
+                  //     ),
+                  //     DisplayDatesSideBar(
+                  //       dates: dates,
+                  //     ),
+                  //   ],
+                  // ),
 
-                    // Stack(
-                    //   alignment: Alignment.centerLeft,
-                    //   children: [
-                    //     IntradayInfoTable(
-                    //       containers: containers,
-                    //       numberFormat: numberFormat,
-                    //       averageIntradayLow: averageIntradayLow,
-                    //       averageIntradayHigh: averageIntradayHigh,
-                    //     ),
-                    //     IntradayDatesSideBar(
-                    //       dates: dates,
-                    //     ),
-                    //   ],
-                    // ),
-                    viewPricesTable
-                        ? lockDatesBar
-                            ? Stack(
-                                alignment: Alignment.centerLeft,
-                                children: [
-                                  DisplayTablePrices(
-                                    hours: hours,
-                                    dates: dates,
-                                    performance: performance,
-                                    numberFormat: numberFormat,
-                                    prices: prices,
-                                    probabilities: probabilities,
-                                  ),
-                                  DisplayDatesSideBar(
-                                    dates: dates,
-                                  ),
-                                ],
-                              )
-                            : DisplayUnlockedTablePrices(
-                                hours: hours,
-                                dates: dates,
-                                performance: performance,
-                                numberFormat: numberFormat,
-                                prices: prices,
-                                probabilities: probabilities,
-                              )
-                        : lockDatesBar
-                            ? Stack(
-                                alignment: Alignment.centerLeft,
-                                children: [
-                                  IntradayInfoTable(
-                                    containers: containers,
-                                    numberFormat: numberFormat,
-                                    averageIntradayLow: averageIntradayLow,
-                                    averageIntradayHigh: averageIntradayHigh,
-                                  ),
-                                  IntradayDatesSideBar(
-                                    dates: dates,
-                                  ),
-                                ],
-                              )
-                            : IntradayUnlockedInfoTable(
-                                containers: containers,
-                                numberFormat: numberFormat,
-                                averageIntradayLow: averageIntradayLow,
-                                averageIntradayHigh: averageIntradayHigh,
-                                dates: dates,
-                              ),
-                    Container(
-                      height: kPadding / 4,
-                      color: kAccentColor.withOpacity(0.4),
-                    ),
-                    viewPricesTable
-                        ? BottomInfoBar(
-                            dates: dates,
-                            ticker: widget.ticker,
-                          )
-                        : Container(),
-                    const SizedBox(
-                      height: 100,
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
+                  // Stack(
+                  //   alignment: Alignment.centerLeft,
+                  //   children: [
+                  //     IntradayInfoTable(
+                  //       containers: containers,
+                  //       numberFormat: numberFormat,
+                  //       averageIntradayLow: averageIntradayLow,
+                  //       averageIntradayHigh: averageIntradayHigh,
+                  //     ),
+                  //     IntradayDatesSideBar(
+                  //       dates: dates,
+                  //     ),
+                  //   ],
+                  // ),
+                  viewPricesTable
+                      ? lockDatesBar
+                          ? Stack(
+                              alignment: Alignment.centerLeft,
+                              children: [
+                                DisplayTablePrices(
+                                  hours: hours,
+                                  dates: dates,
+                                  performance: performance,
+                                  numberFormat: numberFormat,
+                                  prices: prices,
+                                  probabilities: probabilities,
+                                ),
+                                DisplayDatesSideBar(
+                                  dates: dates,
+                                ),
+                              ],
+                            )
+                          : DisplayUnlockedTablePrices(
+                              hours: hours,
+                              dates: dates,
+                              performance: performance,
+                              numberFormat: numberFormat,
+                              prices: prices,
+                              probabilities: probabilities,
+                            )
+                      : lockDatesBar
+                          ? Stack(
+                              alignment: Alignment.centerLeft,
+                              children: [
+                                IntradayInfoTable(
+                                  containers: containers,
+                                  numberFormat: numberFormat,
+                                  averageIntradayLow: averageIntradayLow,
+                                  averageIntradayHigh: averageIntradayHigh,
+                                ),
+                                IntradayDatesSideBar(
+                                  dates: dates,
+                                ),
+                              ],
+                            )
+                          : IntradayUnlockedInfoTable(
+                              containers: containers,
+                              numberFormat: numberFormat,
+                              averageIntradayLow: averageIntradayLow,
+                              averageIntradayHigh: averageIntradayHigh,
+                              dates: dates,
+                            ),
+                  Container(
+                    height: kPadding / 4,
+                    color: kAccentColor.withOpacity(0.4),
+                  ),
+                  viewPricesTable
+                      ? BottomInfoBar(
+                          dates: dates,
+                          ticker: widget.ticker,
+                        )
+                      : Container(),
+                  const SizedBox(
+                    height: 100,
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

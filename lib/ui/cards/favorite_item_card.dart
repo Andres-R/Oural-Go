@@ -36,16 +36,8 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
         ),
       ],
       child: Container(
+        color: kMainBGcolor,
         height: 50,
-        decoration: BoxDecoration(
-          color: kMainBGcolor,
-          boxShadow: [
-            BoxShadow(
-              color: kAccentColor,
-              blurRadius: 5,
-            ),
-          ],
-        ),
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: kPadding,
@@ -55,12 +47,9 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
             children: [
               Row(
                 children: [
-                  Container(
+                  SizedBox(
                     height: 26,
                     width: 26,
-                    decoration: BoxDecoration(
-                      color: kMainBGcolor,
-                    ),
                     child: Center(
                       child: Image.network(
                         'https://companiesmarketcap.com/img/company-logos/64/${widget.ticker}.webp',
@@ -76,15 +65,12 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
                         widget.ticker,
                         style: TextStyle(
                           color: kTextColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
                         ),
                       ),
                       BlocBuilder<TickerCompanyNameCubit,
                           TickerCompanyNameState>(
                         builder: (_, state) {
-                          return Container(
-                            color: kMainBGcolor,
+                          return SizedBox(
                             width: MediaQuery.of(context).size.width * 0.7,
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
@@ -106,10 +92,9 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
                   ),
                 ],
               ),
-              Container(
+              SizedBox(
                 height: 26,
                 width: 26,
-                color: kMainBGcolor,
                 child: Center(
                   child: Icon(
                     Icons.arrow_forward_ios,
