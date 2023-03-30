@@ -47,7 +47,7 @@ class _CustomInputDialogState extends State<CustomInputDialog> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)),
       ),
-      backgroundColor: kMainBGcolor,
+      backgroundColor: Theme.of(context).primaryColor,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.topCenter,
@@ -62,7 +62,7 @@ class _CustomInputDialogState extends State<CustomInputDialog> {
                   Text(
                     "Enter ticker",
                     style: TextStyle(
-                      color: kTextColor,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
                     ),
@@ -119,7 +119,7 @@ class _CustomInputDialogState extends State<CustomInputDialog> {
                       height: 45,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: kThemeColor,
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.all(
                           Radius.circular(kBorderRadius + 5),
                         ),
@@ -128,7 +128,7 @@ class _CustomInputDialogState extends State<CustomInputDialog> {
                         child: Text(
                           "Add",
                           style: TextStyle(
-                            color: kMainBGcolor,
+                            color: Theme.of(context).colorScheme.onSurface,
                             fontSize: 16,
                           ),
                         ),

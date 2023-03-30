@@ -38,8 +38,8 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       keyboardType: inputType,
       focusNode: focusNode,
-      style: TextStyle(color: kTextColor),
-      cursorColor: Colors.black,
+      style: Theme.of(context).textTheme.bodyMedium,
+      cursorColor: Theme.of(context).textTheme.bodyMedium!.color,
       textInputAction: next ? TextInputAction.next : TextInputAction.done,
       onSaved: (value) {
         controller.text = value!;
@@ -48,19 +48,24 @@ class CustomTextFormField extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(horizontal: kPadding),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(kBorderRadius + 5)),
-          borderSide: BorderSide(color: kThemeColor),
+          borderSide:
+              BorderSide(color: Theme.of(context).colorScheme.onBackground),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(kBorderRadius + 5)),
-          borderSide: BorderSide(color: kThemeColor),
+          borderSide:
+              BorderSide(color: Theme.of(context).colorScheme.onBackground),
         ),
         prefixText: enableCurrencyMode ? _currency : '',
-        prefixIcon: Icon(icon, color: kThemeColor),
+        prefixIcon: Icon(
+          icon,
+          color: Theme.of(context).textTheme.bodyMedium!.color,
+        ),
         hintText: hint,
         hintStyle: TextStyle(color: kAccentColor),
         //labelText: hint,
         //labelStyle: TextStyle(color: Colors.grey.shade700),
-        fillColor: kMainBGcolor,
+        fillColor: Theme.of(context).primaryColor,
         filled: true,
         //floatingLabelBehavior: FloatingLabelBehavior.never,
       ),

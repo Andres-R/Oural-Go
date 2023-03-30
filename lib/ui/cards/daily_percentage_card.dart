@@ -42,9 +42,7 @@ class DailyPercentageCard extends StatelessWidget {
             priceMovement > 0
                 ? '\$${priceMovement.toStringAsFixed(2)}'
                 : '${priceMovement.toString()[0]}\$${priceMovement.toStringAsFixed(2).substring(1)}',
-            style: TextStyle(
-              color: kTextColor,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],
       ),

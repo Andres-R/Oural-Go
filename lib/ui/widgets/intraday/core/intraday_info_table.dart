@@ -24,39 +24,34 @@ class IntradayInfoTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: kMainBGcolor,
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            Container(
-              width: 135,
-            ),
-            IntradayLowPriceBar(
-              containers: containers,
-              numberFormat: numberFormat,
-            ),
-            IntradayLowInfoBar(
-              containers: containers,
-              averageLow: averageIntradayLow,
-            ),
-            IntradayOpenPriceBar(
-              containers: containers,
-              numberFormat: numberFormat,
-            ),
-            IntradayHighInfoBar(
-              containers: containers,
-              averageHigh: averageIntradayHigh,
-            ),
-            IntradayHighPriceBar(
-              containers: containers,
-              numberFormat: numberFormat,
-            ),
-          ],
-        ),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          Container(
+            width: 135,
+          ),
+          IntradayLowPriceBar(
+            containers: containers,
+            numberFormat: numberFormat,
+          ),
+          IntradayLowInfoBar(
+            containers: containers,
+            averageLow: averageIntradayLow,
+          ),
+          IntradayOpenPriceBar(
+            containers: containers,
+            numberFormat: numberFormat,
+          ),
+          IntradayHighInfoBar(
+            containers: containers,
+            averageHigh: averageIntradayHigh,
+          ),
+          IntradayHighPriceBar(
+            containers: containers,
+            numberFormat: numberFormat,
+          ),
+        ],
       ),
     );
   }

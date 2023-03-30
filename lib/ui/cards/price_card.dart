@@ -27,9 +27,7 @@ class PriceCard extends StatelessWidget {
               children: [
                 Text(
                   price,
-                  style: TextStyle(
-                    color: kTextColor,
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),

@@ -41,9 +41,7 @@ class PastPerformanceCard extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.25,
           child: Text(
             description,
-            style: TextStyle(
-              color: kTextColor,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium,
             textAlign: TextAlign.center,
           ),
         ),

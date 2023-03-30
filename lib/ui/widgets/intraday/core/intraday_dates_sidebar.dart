@@ -18,7 +18,7 @@ class IntradayDatesSideBar extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(right: 5),
         decoration: BoxDecoration(
-          color: kMainBGcolor,
+          color: Theme.of(context).primaryColor,
           boxShadow: [
             BoxShadow(
               color: kAccentColor,
@@ -33,9 +33,7 @@ class IntradayDatesSideBar extends StatelessWidget {
             children: [
               Text(
                 'Dates',
-                style: TextStyle(
-                  color: kTextColor,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(height: kPadding / 2),
               ...List.generate(
@@ -43,38 +41,31 @@ class IntradayDatesSideBar extends StatelessWidget {
                 (index) {
                   return Column(
                     children: [
-                      Container(
-                        color: kMainBGcolor,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 20,
-                              //color: Colors.purple,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    (index + 1).toString(),
-                                    style: TextStyle(
-                                      color: kTextColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              //width: 40,
-                              //color: Colors.red,
-                              child: Text(
-                                dates[index],
-                                style: TextStyle(
-                                  color: kTextColor,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: 20,
+                            //color: Colors.purple,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  (index + 1).toString(),
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                 ),
-                              ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            //width: 40,
+                            //color: Colors.red,
+                            child: Text(
+                              dates[index],
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: kPadding / 2),
                     ],

@@ -20,7 +20,7 @@ class DisplayDatesSideBar extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(right: 5),
         decoration: BoxDecoration(
-          color: kMainBGcolor,
+          color: Theme.of(context).primaryColor,
           boxShadow: [
             BoxShadow(
               color: kAccentColor,
@@ -35,9 +35,7 @@ class DisplayDatesSideBar extends StatelessWidget {
             children: [
               Text(
                 'Dates',
-                style: TextStyle(
-                  color: kTextColor,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(height: kPadding / 2),
               ...List.generate(
@@ -55,9 +53,7 @@ class DisplayDatesSideBar extends StatelessWidget {
                               children: [
                                 Text(
                                   (index + 1).toString(),
-                                  style: TextStyle(
-                                    color: kTextColor,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               ],
                             ),
@@ -65,9 +61,7 @@ class DisplayDatesSideBar extends StatelessWidget {
                           SizedBox(
                             child: Text(
                               dates[index],
-                              style: TextStyle(
-                                color: kTextColor,
-                              ),
+                              style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
                         ],

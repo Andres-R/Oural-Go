@@ -15,8 +15,7 @@ class IntradayHighPriceBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: kMainBGcolor,
+    return SizedBox(
       width: 80,
       child: Padding(
         padding: EdgeInsets.all(kPadding / 2),
@@ -24,9 +23,7 @@ class IntradayHighPriceBar extends StatelessWidget {
           children: [
             Text(
               'High',
-              style: TextStyle(
-                color: kTextColor,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             SizedBox(height: kPadding / 2),
             ...List.generate(
@@ -39,9 +36,7 @@ class IntradayHighPriceBar extends StatelessWidget {
                       children: [
                         Text(
                           '\$${numberFormat.format(containers[index].open + containers[index].intradayHigh)}',
-                          style: TextStyle(
-                            color: kTextColor,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],
                     ),

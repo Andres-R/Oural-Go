@@ -41,14 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
       child: Scaffold(
         appBar: AppBar(
-          elevation: 0,
           //backgroundColor: theme value used,
-          backgroundColor: kMainBGcolor,
-          centerTitle: true,
+          //backgroundColor: kMainBGcolor,
           title: Text(
             'Tickers',
             style: TextStyle(
-              color: kTextColor,
+              color: Theme.of(context).textTheme.bodyMedium!.color,
               fontSize: kTitleText,
             ),
           ),
@@ -68,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       'Favorites',
                       style: TextStyle(
-                        color: kTextColor,
+                        color: Theme.of(context).textTheme.bodyMedium!.color,
                         fontSize: 26,
                       ),
                     ),
@@ -114,13 +112,13 @@ class _HomeScreenState extends State<HomeScreen> {
           label: Text(
             'Add ticker',
             style: TextStyle(
-              color: kIconColor,
+              color: Theme.of(context).colorScheme.onSurface,
               fontSize: 18,
             ),
           ),
           icon: Icon(
             Icons.add,
-            color: kIconColor,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
           onPressed: () {
             showInputDialog(
@@ -129,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
               _favoriteItemsCubit,
             );
           },
-          backgroundColor: kThemeColor,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(kBorderRadius),

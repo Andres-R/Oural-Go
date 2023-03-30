@@ -14,68 +14,62 @@ class IntradayLowInfoBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: kMainBGcolor,
-      //width: 80,
-      child: Padding(
-        padding: EdgeInsets.all(kPadding / 2),
-        child: Column(
-          children: [
-            const Text(''),
-            SizedBox(height: kPadding / 2),
-            ...List.generate(
-              containers.length,
-              (index) {
-                return Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: kBearish.withOpacity(0.2),
-                            borderRadius: const BorderRadius.all(
-                              Radius.circular(5),
-                            ),
-                          ),
-                          child: Text(
-                            '-${containers[index].intradayLow.toStringAsFixed(2)}',
-                            style: TextStyle(
-                              color: kBearish,
-                            ),
+    return Padding(
+      padding: EdgeInsets.all(kPadding / 2),
+      child: Column(
+        children: [
+          const Text(''),
+          SizedBox(height: kPadding / 2),
+          ...List.generate(
+            containers.length,
+            (index) {
+              return Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: kBearish.withOpacity(0.2),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(5),
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(height: kPadding / 2),
-                  ],
-                );
-              },
+                        child: Text(
+                          '-${containers[index].intradayLow.toStringAsFixed(2)}',
+                          style: TextStyle(
+                            color: kBearish,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: kPadding / 2),
+                ],
+              );
+            },
+          ),
+          Text(
+            'Avg.',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          SizedBox(height: kPadding / 2),
+          Container(
+            decoration: BoxDecoration(
+              color: kBearish.withOpacity(0.2),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(5),
+              ),
             ),
-            Text(
-              'Avg.',
+            child: Text(
+              '-${averageLow.toStringAsFixed(2)}',
               style: TextStyle(
-                color: kTextColor,
+                color: kBearish,
               ),
             ),
-            SizedBox(height: kPadding / 2),
-            Container(
-              decoration: BoxDecoration(
-                color: kBearish.withOpacity(0.2),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(5),
-                ),
-              ),
-              child: Text(
-                '-${averageLow.toStringAsFixed(2)}',
-                style: TextStyle(
-                  color: kBearish,
-                ),
-              ),
-            ),
-            SizedBox(height: kPadding / 2),
-          ],
-        ),
+          ),
+          SizedBox(height: kPadding / 2),
+        ],
       ),
     );
   }

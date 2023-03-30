@@ -63,18 +63,16 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
       ],
       child: Scaffold(
         appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
           automaticallyImplyLeading: true,
           iconTheme: IconThemeData(
             color: kAccentColor,
           ),
           //backgroundColor: theme value used,
-          backgroundColor: kMainBGcolor,
+          //backgroundColor: kMainBGcolor,
           title: Text(
             widget.ticker,
             style: TextStyle(
-              color: kTextColor,
+              color: Theme.of(context).textTheme.bodyMedium!.color,
               fontSize: kTitleText,
             ),
           ),
@@ -106,7 +104,9 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                     Icon(
                       Icons.star,
                       size: 26,
-                      color: isFavorited ? Colors.yellow : kMainBGcolor,
+                      color: isFavorited
+                          ? Colors.yellow
+                          : Theme.of(context).primaryColor,
                     ),
                   ],
                 ),
@@ -124,10 +124,10 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                   lockDatesBar = !lockDatesBar;
                 });
               },
-              backgroundColor: kThemeColor,
+              backgroundColor: Theme.of(context).colorScheme.surface,
               child: Icon(
                 lockDatesBar ? Icons.lock_outline : Icons.sync_alt,
-                color: kIconColor,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             SizedBox(height: kPadding),
@@ -138,17 +138,17 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                   viewPricesTable = !viewPricesTable;
                 });
               },
-              backgroundColor: kThemeColor,
+              backgroundColor: Theme.of(context).colorScheme.surface,
               child: viewPricesTable
                   ? Icon(
                       Icons.sync,
-                      color: kIconColor,
+                      color: Theme.of(context).colorScheme.onSurface,
                     )
                   : RotationTransition(
                       turns: const AlwaysStoppedAnimation(90 / 360),
                       child: Icon(
                         Icons.sync,
-                        color: kIconColor,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
             ),

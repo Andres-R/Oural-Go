@@ -15,7 +15,7 @@ class DisconnectedScreen extends StatelessWidget {
             Text(
               'Uh Oh!',
               style: TextStyle(
-                color: kTextColor,
+                color: Theme.of(context).textTheme.bodyMedium!.color,
                 fontSize: 42,
                 fontWeight: FontWeight.bold,
               ),
@@ -23,7 +23,7 @@ class DisconnectedScreen extends StatelessWidget {
             Text(
               'Something went wrong...',
               style: TextStyle(
-                color: kTextColor,
+                color: Theme.of(context).textTheme.bodyMedium!.color,
                 fontSize: kTitleText,
               ),
             ),
@@ -38,7 +38,7 @@ class DisconnectedScreen extends StatelessWidget {
             ),
             SizedBox(height: kPadding * 4),
             CircularProgressIndicator(
-              color: kTextColor,
+              color: Theme.of(context).textTheme.bodyMedium!.color,
             ),
           ],
         ),

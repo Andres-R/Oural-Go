@@ -43,15 +43,11 @@ class BottomInfoBar extends StatelessWidget {
                 children: [
                   Text(
                     'Denotes increase of asset price between a 30',
-                    style: TextStyle(
-                      color: kTextColor,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   Text(
                     'min interval',
-                    style: TextStyle(
-                      color: kTextColor,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),
@@ -87,15 +83,11 @@ class BottomInfoBar extends StatelessWidget {
                 children: [
                   Text(
                     'Denotes decrease of asset price between a 30',
-                    style: TextStyle(
-                      color: kTextColor,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   Text(
                     'min interval',
-                    style: TextStyle(
-                      color: kTextColor,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),
@@ -118,7 +110,7 @@ class BottomInfoBar extends StatelessWidget {
                   child: Icon(
                     //Icons.arrow_right_alt,
                     Icons.arrow_forward,
-                    color: kTextColor,
+                    color: Theme.of(context).textTheme.bodyMedium!.color,
                     size: 16,
                   ),
                 ),
@@ -129,15 +121,11 @@ class BottomInfoBar extends StatelessWidget {
                 children: [
                   Text(
                     'Denotes no change of asset price between a 30',
-                    style: TextStyle(
-                      color: kTextColor,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   Text(
                     'min interval',
-                    style: TextStyle(
-                      color: kTextColor,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),
@@ -167,9 +155,7 @@ class BottomInfoBar extends StatelessWidget {
                     children: [
                       Text(
                         'Denotes probability of  ',
-                        style: TextStyle(
-                          color: kTextColor,
-                        ),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       Container(
                         height: kPadding,
@@ -190,17 +176,13 @@ class BottomInfoBar extends StatelessWidget {
                       ),
                       Text(
                         '  occuring over',
-                        style: TextStyle(
-                          color: kTextColor,
-                        ),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),
                   Text(
                     'the past ${dates.length} trading days for $ticker',
-                    style: TextStyle(
-                      color: kTextColor,
-                    ),
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),

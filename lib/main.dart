@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:oural_go/ui/screens/general/ticker_info_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oural_go/ui/screens/other/monitor_screen.dart';
+import 'package:oural_go/utils/themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,31 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        //works
-        primaryColor: Colors.purple,
-        //works
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.orange,
-        ),
-        //works
-        scaffoldBackgroundColor: Colors.red,
-        //works
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(
-            color: Colors.yellow,
-          ),
-          bodyLarge: TextStyle(
-            color: Colors.amber,
-            fontSize: 42.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      theme: lightThemeData(context),
+      darkTheme: darkThemeData(context),
+      themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoute,
-      home: const TestScreen(),
-      //home: const MonitorScreen(),
+      home: const MonitorScreen(),
     );
   }
 
@@ -60,43 +42,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class TestScreen extends StatelessWidget {
-  const TestScreen({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-      ),
-      body: Column(
-        children: [
-          Text(
-            'Main Text',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          Text(
-            'Accent Text',
-            style: Theme.of(context)
-                .textTheme
-                .apply(bodyColor: Colors.green)
-                .bodyMedium,
-          ),
-          Text(
-            'BIG Text',
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          Container(
-            height: 50,
-            color: Theme.of(context).primaryColor,
-          )
-        ],
-      ),
-    );
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import 'package:flutter/material.dart';
 // import 'package:oural_go/ui/screens/general/ticker_info_screen.dart';
@@ -145,6 +107,23 @@ class TestScreen extends StatelessWidget {
 //     return null;
 //   }
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import 'package:flutter/material.dart';
 // import 'package:oural_go/connection/connection_type.dart';

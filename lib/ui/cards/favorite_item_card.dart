@@ -36,7 +36,7 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
         ),
       ],
       child: Container(
-        color: kMainBGcolor,
+        color: Theme.of(context).primaryColor,
         height: 50,
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -56,16 +56,14 @@ class _FavoriteItemCardState extends State<FavoriteItemCard> {
                       ),
                     ),
                   ),
-                  SizedBox(width: kPadding / 2),
+                  SizedBox(width: kPadding / 1.5),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         widget.ticker,
-                        style: TextStyle(
-                          color: kTextColor,
-                        ),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       BlocBuilder<TickerCompanyNameCubit,
                           TickerCompanyNameState>(

@@ -54,9 +54,7 @@ class DisplayTablePrices extends StatelessWidget {
                       child: Center(
                         child: Text(
                           'Performance',
-                          style: TextStyle(
-                            color: kTextColor,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ),
                     ),
@@ -85,14 +83,14 @@ class DisplayTablePrices extends StatelessWidget {
                                 Widget icon = Icon(
                                   Icons.add,
                                   size: 12,
-                                  color: kMainBGcolor,
+                                  color: Theme.of(context).primaryColor,
                                 );
-                                Color iconBG = kMainBGcolor;
+                                Color iconBG = Theme.of(context).primaryColor;
 
                                 String letter = '';
                                 if (j != hours.length - 1) {
                                   letter = performance[i][j];
-                                  icon = determineIcon(letter);
+                                  icon = determineIcon(letter, context);
                                   iconBG = determineColor(letter);
                                 }
 
@@ -156,7 +154,7 @@ class DisplayTablePrices extends StatelessWidget {
     }
   }
 
-  Widget determineIcon(String letter) {
+  Widget determineIcon(String letter, BuildContext context) {
     if (letter == 'U') {
       return Icon(
         Icons.call_made_rounded,
@@ -176,7 +174,7 @@ class DisplayTablePrices extends StatelessWidget {
       return Icon(
         //Icons.arrow_right_alt,
         Icons.arrow_forward,
-        color: kTextColor,
+        color: Theme.of(context).textTheme.bodyMedium!.color,
         size: 16,
       );
     }

@@ -28,7 +28,7 @@ class CustomErrorDialog extends StatelessWidget {
           Radius.circular(kBorderRadius),
         ),
       ),
-      backgroundColor: kMainBGcolor,
+      backgroundColor: Theme.of(context).primaryColor,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.topCenter,
@@ -44,7 +44,7 @@ class CustomErrorDialog extends StatelessWidget {
                     "Error",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: kTextColor,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
                       fontSize: 32,
                     ),
                     textAlign: TextAlign.center,
@@ -67,7 +67,7 @@ class CustomErrorDialog extends StatelessWidget {
                       height: 45,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: kTextColor,
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.all(
                           Radius.circular(kBorderRadius + 5),
                         ),
@@ -76,7 +76,7 @@ class CustomErrorDialog extends StatelessWidget {
                         child: Text(
                           "Okay",
                           style: TextStyle(
-                            color: kMainBGcolor,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
                       ),
@@ -89,13 +89,14 @@ class CustomErrorDialog extends StatelessWidget {
           Positioned(
             top: -40,
             child: CircleAvatar(
-              backgroundColor: kThemeColor,
+              //backgroundColor: Theme.of(context).colorScheme.surface,
+              backgroundColor: kBearish,
               radius: 50,
               child: Center(
                 child: Icon(
                   Icons.error,
                   size: 95,
-                  color: kMainBGcolor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
             ),

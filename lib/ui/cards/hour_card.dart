@@ -28,9 +28,7 @@ class HourCard extends StatelessWidget {
               children: [
                 Text(
                   hour,
-                  style: TextStyle(
-                    color: kTextColor,
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),
