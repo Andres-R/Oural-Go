@@ -10,18 +10,17 @@ class ImprovedInternetCubit extends Cubit<ImprovedInternetState> {
     checkStreamForConnection();
   }
 
-  // this stream actually changes in real time
   late StreamSubscription internetSubscription;
 
   void checkStreamForConnection() {
     internetSubscription = InternetConnectionChecker().onStatusChange.listen(
       (status) {
+        // Connectivity connectivity = Connectivity();
+        // connectivity.onConnectivityChanged.listen((connectivityResult) {
+        //   // connectivityResult == ConnectivityResult.wifi
+        //   // emit(InternetConnected(connectionType: ConnectionType.wifi));
+        // });
         if (status == InternetConnectionStatus.connected) {
-          // Connectivity connectivity = Connectivity();
-          // connectivity.onConnectivityChanged.listen((connectivityResult) {
-          //   // connectivityResult == ConnectivityResult.wifi
-          //   // emit(InternetConnected(connectionType: ConnectionType.wifi));
-          // });
           emit(InternetConnected());
         } else {
           emit(InternetDisconnected());
