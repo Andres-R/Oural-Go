@@ -24,7 +24,7 @@ ThemeData darkThemeData(BuildContext context) {
     appBarTheme: AppBarTheme(
       backgroundColor: kDarkModeBG,
       centerTitle: true,
-      elevation: 5,
+      elevation: 0,
     ),
     //color is also main bg color
     scaffoldBackgroundColor: kDarkModeBG,
@@ -59,7 +59,7 @@ ThemeData lightThemeData(BuildContext context) {
     appBarTheme: AppBarTheme(
       backgroundColor: kLightModeBG,
       centerTitle: true,
-      elevation: 5,
+      elevation: 0,
     ),
     //color is also main bg color
     scaffoldBackgroundColor: kLightModeBG,

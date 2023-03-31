@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:oural_go/cubit/improved_internet_cubit.dart';
+import 'package:oural_go/ui/screens/general/home_screen.dart';
 import 'package:oural_go/ui/screens/general/ticker_info_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oural_go/ui/screens/other/disconnected_screen.dart';
+import 'package:oural_go/ui/screens/other/loading_screen.dart';
 import 'package:oural_go/ui/screens/other/monitor_screen.dart';
+import 'package:oural_go/utils/constants.dart';
 import 'package:oural_go/utils/themes.dart';
 
 void main() {
@@ -18,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: lightThemeData(context),
       darkTheme: darkThemeData(context),
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoute,
       home: const MonitorScreen(),
