@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oural_go/cubit/improved_internet_cubit.dart';
+import 'package:oural_go/cubit/internet_cubit.dart';
 import 'package:oural_go/ui/screens/general/home_screen.dart';
 import 'package:oural_go/ui/screens/other/disconnected_screen.dart';
 import 'package:oural_go/ui/screens/other/loading_screen.dart';
@@ -10,9 +10,9 @@ class MonitorConnectionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ImprovedInternetCubit>(
-      create: (_) => ImprovedInternetCubit(),
-      child: BlocBuilder<ImprovedInternetCubit, ImprovedInternetState>(
+    return BlocProvider<InternetCubit>(
+      create: (_) => InternetCubit(),
+      child: BlocBuilder<InternetCubit, InternetState>(
         builder: (_, connectionState) {
           if (connectionState is InternetLoading) {
             return const LoadingScreen();
