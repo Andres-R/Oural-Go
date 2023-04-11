@@ -20,6 +20,7 @@ class IntradayHighPriceBar extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(kPadding / 2),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
               'High',

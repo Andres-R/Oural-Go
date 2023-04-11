@@ -11,6 +11,7 @@ import 'package:oural_go/ui/widgets/other/bottom_info_bar.dart';
 import 'package:oural_go/ui/widgets/other/display_dates_sidebar.dart';
 import 'package:oural_go/ui/widgets/other/display_table_prices.dart';
 import 'package:oural_go/ui/widgets/intraday/core/intraday_info_table.dart';
+import 'package:oural_go/ui/widgets/other/intraday_bottom_info_bar.dart';
 import 'package:oural_go/ui/widgets/unlocked/display_unlocked_table_prices.dart';
 import 'package:oural_go/ui/widgets/unlocked/intraday_unlocked_info_table.dart';
 import 'package:oural_go/utils/constants.dart';
@@ -328,9 +329,9 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                           dates: dates,
                           ticker: widget.ticker,
                         )
-                      : Container(),
+                      : const IntradayBottomInfoBar(),
                   const SizedBox(
-                    height: 100,
+                    height: 200,
                   ),
                 ],
               ),

@@ -5,6 +5,7 @@ import 'package:oural_go/ui/widgets/intraday/content/intraday_high_price_bar.dar
 import 'package:oural_go/ui/widgets/intraday/content/intraday_low_info_bar.dart';
 import 'package:oural_go/ui/widgets/intraday/content/intraday_low_price_bar.dart';
 import 'package:oural_go/ui/widgets/intraday/content/intraday_open_price_bar.dart';
+import 'package:oural_go/ui/widgets/intraday/content/intraday_true_range_bar.dart';
 import 'package:oural_go/utils/constants.dart';
 import 'package:intl/intl.dart';
 
@@ -51,6 +52,12 @@ class IntradayInfoTable extends StatelessWidget {
             containers: containers,
             numberFormat: numberFormat,
           ),
+          SizedBox(width: kPadding),
+          IntradayTrueRangeBar(
+            containers: containers,
+            numberFormat: numberFormat,
+          ),
+          SizedBox(width: kPadding),
         ],
       ),
     );
