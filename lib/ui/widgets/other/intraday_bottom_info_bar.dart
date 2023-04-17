@@ -35,6 +35,21 @@ class IntradayBottomInfoBar extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(height: kPadding),
+          Row(
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'SD',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              SizedBox(width: kPadding),
+              Text(
+                '(Standard Deviation)',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ],
+          ),
         ],
       ),
     );

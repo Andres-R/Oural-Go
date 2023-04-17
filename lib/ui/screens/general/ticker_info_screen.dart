@@ -177,6 +177,8 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                 tickerState.tickerInfoContainer.pastTradingDaysPerformance;
             double pastWeekPerformance =
                 tickerState.tickerInfoContainer.pastWeekPerformance;
+            double standardDeviation =
+                tickerState.tickerInfoContainer.standardDeviation;
 
             return SingleChildScrollView(
               child: Column(
@@ -307,6 +309,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                                   numberFormat: numberFormat,
                                   averageIntradayLow: averageIntradayLow,
                                   averageIntradayHigh: averageIntradayHigh,
+                                  standardDeviation: standardDeviation,
                                 ),
                                 IntradayDatesSideBar(
                                   dates: dates,
@@ -319,6 +322,7 @@ class _TickerInfoScreenState extends State<TickerInfoScreen> {
                               averageIntradayLow: averageIntradayLow,
                               averageIntradayHigh: averageIntradayHigh,
                               dates: dates,
+                              standardDeviation: standardDeviation,
                             ),
                   Container(
                     height: kPadding / 4,

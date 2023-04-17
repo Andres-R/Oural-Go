@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:oural_go/data/models/intraday_info_container.dart';
 import 'package:intl/intl.dart';
 import 'package:oural_go/data/models/ticker_info_container.dart';
+import 'dart:convert';
+import 'dart:math';
 
 class DataService {
   final int timestampCount = 14;
@@ -90,6 +92,8 @@ class DataService {
       endpoint,
     );
 
+    double standardDeviation = getStandardDeviation(containers);
+
     double averageHigh = getAverageIntradayHigh(containers);
     double averageLow = getAverageIntradayLow(containers);
 
@@ -129,6 +133,7 @@ class DataService {
       pastMonthPerformance: pastMonthPerformance,
       pastTradingDaysPerformance: pastTradingDaysPerformance,
       pastWeekPerformance: pastWeekPerformance,
+      standardDeviation: standardDeviation,
     );
   }
 
@@ -379,6 +384,48 @@ class DataService {
       print(e);
     }
     return containers;
+  }
+
+  //
+  //
+  //
+  //
+  //
+  double getStandardDeviation(List<IntradayInfoContainer> containers) {
+    List<double> trueRanges = [];
+    double sum = 0;
+    for (final container in containers) {
+      sum += container.intradayLow + container.intradayHigh;
+      trueRanges.add(container.intradayLow + container.intradayHigh);
+    }
+
+    // 1
+    double mean = sum / trueRanges.length.toDouble();
+
+    // 2
+    List<double> deviations = [];
+    for (double range in trueRanges) {
+      deviations.add(range - mean);
+    }
+
+    // 3
+    List<double> squares = [];
+    for (double deviation in deviations) {
+      squares.add(deviation * deviation);
+    }
+
+    // 4
+    double squareSum = 0;
+    for (double square in squares) {
+      squareSum += square;
+    }
+
+    // 5
+    double variance = squareSum / (trueRanges.length - 1);
+
+    // 6
+    double standardDeviation = sqrt(variance);
+    return standardDeviation;
   }
 
   //

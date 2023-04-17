@@ -69,6 +69,10 @@ class IntradayHighInfoBar extends StatelessWidget {
             ),
           ),
           SizedBox(height: kPadding / 2),
+          const Text(''),
+          SizedBox(height: kPadding / 2),
+          const Text(''),
+          SizedBox(height: kPadding / 2),
         ],
       ),
     );

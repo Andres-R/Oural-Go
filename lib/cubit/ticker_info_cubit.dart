@@ -24,6 +24,7 @@ class TickerInfoCubit extends Cubit<TickerInfoState> {
               pastMonthPerformance: 0.0,
               pastTradingDaysPerformance: 0.0,
               pastWeekPerformance: 0.0,
+              standardDeviation: 0.0,
             ),
           ),
         ) {

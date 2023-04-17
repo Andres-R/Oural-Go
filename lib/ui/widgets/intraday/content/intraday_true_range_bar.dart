@@ -8,10 +8,12 @@ class IntradayTrueRangeBar extends StatelessWidget {
     Key? key,
     required this.containers,
     required this.numberFormat,
+    required this.standardDeviation,
   }) : super(key: key);
 
   final List<IntradayInfoContainer> containers;
   final NumberFormat numberFormat;
+  final double standardDeviation;
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +83,24 @@ class IntradayTrueRangeBar extends StatelessWidget {
                     '\$${numberFormat.format(getAverageTrueRange())}',
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
+                ],
+              ),
+              SizedBox(height: kPadding / 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'SD',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ],
+              ),
+              SizedBox(height: kPadding / 2),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text('\$${numberFormat.format(standardDeviation)}',
+                      style: Theme.of(context).textTheme.bodyMedium),
                 ],
               ),
               SizedBox(height: kPadding / 2),

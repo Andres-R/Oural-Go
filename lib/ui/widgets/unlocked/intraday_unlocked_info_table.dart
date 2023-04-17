@@ -18,6 +18,7 @@ class IntradayUnlockedInfoTable extends StatelessWidget {
     required this.averageIntradayLow,
     required this.averageIntradayHigh,
     required this.dates,
+    required this.standardDeviation,
   }) : super(key: key);
 
   final List<IntradayInfoContainer> containers;
@@ -25,6 +26,7 @@ class IntradayUnlockedInfoTable extends StatelessWidget {
   final NumberFormat numberFormat;
   final double averageIntradayLow;
   final double averageIntradayHigh;
+  final double standardDeviation;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,7 @@ class IntradayUnlockedInfoTable extends StatelessWidget {
           IntradayTrueRangeBar(
             containers: containers,
             numberFormat: numberFormat,
+            standardDeviation: standardDeviation,
           ),
           SizedBox(width: kPadding),
         ],

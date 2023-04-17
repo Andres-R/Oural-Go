@@ -13,6 +13,7 @@ class TickerInfoContainer {
   double pastMonthPerformance;
   double pastTradingDaysPerformance;
   double pastWeekPerformance;
+  double standardDeviation;
 
   TickerInfoContainer({
     required this.ticker,
@@ -27,5 +28,6 @@ class TickerInfoContainer {
     required this.pastMonthPerformance,
     required this.pastTradingDaysPerformance,
     required this.pastWeekPerformance,
+    required this.standardDeviation,
   });
 }
